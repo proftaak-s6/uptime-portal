@@ -17,8 +17,9 @@ export class ApplicationComponent implements OnInit {
   constructor(private appService: ApplicationService) { }
 
   ngOnInit() {
-    // Has to be a subscription when API is available
-    this.resolveStatus(this.appService.checkStatus(this.url));
+    this.appService.checkStatus(this.url).subscribe(res => {
+      this.resolveStatus(res[0].status);
+    });
   }
 
   resolveStatus(status: number) {
