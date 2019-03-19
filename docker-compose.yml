@@ -5,4 +5,4 @@ services:
     container_name: uptime-portal 
     build: .
     ports:
-      - 4200:80
+      - 4000:80
