@@ -11,8 +11,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { url: 'http://docs.rekeningrijden.fontys-project.nl', status: '200' },
       { url: 'http://simulatie.rekeningrijden.fontys-project.nl', status: '404' },
       { url: 'http://registratie.rekeningrijden.fontys-project.nl', status: '200' },
-      { url: 'http://mijn.rekeningrijden.fontys-project.nl', status: '404' },
-      { url: 'http://politie.rekeningrijden.fontys-project.nl', status: '404' },
+      { url: 'http://mijn.rekeningrijden.fontys-project.nl', status: '304' },
+      { url: 'http://politie.rekeningrijden.fontys-project.nl', status: '500' },
       { url: 'http://overheid.rekeningrijden.fontys-project.nl', status: '200' }
     ];
     return {servers};

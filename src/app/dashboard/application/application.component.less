@@ -2,40 +2,71 @@
 
     .application-card {
         margin: 0 12px 24px 12px;
-        padding: 6px;
-        border: 1px solid gray;
+        padding: 0;
 
-        a {
-            text-decoration: none;
-            color: black;
+        .application-color {
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+            padding: 16px;
+            height: 80px;
+            position: relative;
 
-            &:hover {
-                text-decoration: underline;
+            mat-card-title {
+                color: white;
+                position: absolute;
+                bottom: 0;
+
+                margin-bottom: 12px;
             }
         }
-        
-        .status-bar {
 
-            .status {
+        .application-context {
+            padding: 16px;
 
-                &.informational {
-                    color: yellow;
+            .url-bar {
+                margin-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: #2196f3;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: #0d47a1;
+                    }
                 }
-            
-                &.success {
-                    color: green;
+            }
+
+            .status-bar {
+
+                mat-icon {
+                    position: absolute;
+                    font-size: 20px;
+                    right: 10px;
+                    bottom: 10px;
                 }
-            
-                &.redirection {
-                    color: gold;
-                }
-            
-                &.client-error {
-                    color: orange;
-                }
-            
-                &.server-error {
-                    color: red;
+
+                .status {
+    
+                    &.informational {
+                        color: yellow;
+                    }
+                
+                    &.success {
+                        color: green;
+                    }
+                
+                    &.redirection {
+                        color: gold;
+                    }
+                
+                    &.client-error {
+                        color: orange;
+                    }
+                
+                    &.server-error {
+                        color: red;
+                    }
                 }
             }
         }

@@ -7,19 +7,32 @@ import { InMemoryDataService } from './services/in-memory/in-memory-data.service
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApplicationComponent } from './dashboard/application/application.component';
+import { HeaderComponent } from './header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatToolbarModule,
+  MatCardModule,
+  MatIconModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ApplicationComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    BrowserAnimationsModule,
+    // Material modules
+    MatToolbarModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
