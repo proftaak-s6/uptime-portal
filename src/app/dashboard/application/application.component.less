@@ -1,0 +1,74 @@
+.application-container {
+
+    .application-card {
+        margin: 0 12px 24px 12px;
+        padding: 0;
+
+        .application-color {
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+            padding: 16px;
+            height: 80px;
+            position: relative;
+
+            mat-card-title {
+                color: white;
+                position: absolute;
+                bottom: 0;
+
+                margin-bottom: 12px;
+            }
+        }
+
+        .application-context {
+            padding: 16px;
+
+            .url-bar {
+                margin-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: #2196f3;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: #0d47a1;
+                    }
+                }
+            }
+
+            .status-bar {
+
+                mat-icon {
+                    position: absolute;
+                    font-size: 20px;
+                    right: 10px;
+                    bottom: 10px;
+                }
+
+                .status {
+    
+                    &.informational {
+                        color: yellow;
+                    }
+                
+                    &.success {
+                        color: green;
+                    }
+                
+                    &.redirection {
+                        color: gold;
+                    }
+                
+                    &.client-error {
+                        color: orange;
+                    }
+                
+                    &.server-error {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
