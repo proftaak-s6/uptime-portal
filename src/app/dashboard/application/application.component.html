@@ -1,0 +1,19 @@
+<div class="application-container">
+  <mat-card class="application-card">
+    <div class="application-color" [ngStyle]="{ 'background-color': appColor }" >
+      <mat-card-title>{{ this.appName }}</mat-card-title>
+    </div>
+    <mat-card-content class="application-context">
+      <div class="url-bar">
+        <a href="{{ this.url }}" target="_blank"><span>{{ this.url }}</span></a>
+      </div>
+      <div class="status-bar">
+        <span>status: </span><span class="status {{ this.statusClass }}">{{ this.statusMessage }}<mat-icon>{{ this.statusIcon }}</mat-icon></span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- <a class="application-link" href="{{ this.url }}" target="_blank">
+      <h3>{{ this.appName }}</h3>
+    </a> -->
