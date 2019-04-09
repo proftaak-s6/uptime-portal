@@ -3,7 +3,7 @@ version: '3'
 services:
   overheidsportaal:
     container_name: uptime-portal 
-    build: .
+    # build: .
     image: yoksar/docker-test
     ports:
       - 4000:80
