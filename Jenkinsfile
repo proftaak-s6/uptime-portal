@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "yoksar/docker-test"
+    registry = "yoksar/uptime-portal"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
