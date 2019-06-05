@@ -89,11 +89,7 @@ pipeline {
                     steps{
                         node("docker-prod"){
                             git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'acceptance', credentialsId: 'Github'])
-                            script{
-                                try{
-                                    sh "docker service rm uptime-portal-ACC_overheidsportaal"
-                                }
-                            }
+                            // sh "docker service rm uptime-portal-ACC_overheidsportaal"
                             sh "docker stack deploy --with-registry-auth -c docker-compose.yml uptime-portal-ACC"
                         }
                     }
