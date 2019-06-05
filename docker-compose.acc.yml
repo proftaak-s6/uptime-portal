@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  overheidsportaal:
+    container_name: uptime-portal 
+    # build: .
+    image: yoksar/uptime-portal
+    ports:
+      - 40000:80

@@ -40,7 +40,7 @@ pipeline {
                 }
 
 
-                stage("ACC") {
+                stage("PROD") {
                     steps{
                         node("docker-prod"){
                             git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'master', credentialsId: 'Github'])
@@ -85,12 +85,12 @@ pipeline {
                 }
 
 
-                stage("Production") {
+                stage("ACC") {
                     steps{
                         node("docker-prod"){
                             git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'acceptance', credentialsId: 'Github'])
                             // sh "docker service rm uptime-portal-ACC_overheidsportaal"
-                            sh "docker stack deploy --with-registry-auth -c docker-compose.yml uptime-portal-ACC"
+                            sh "docker stack deploy --with-registry-auth -c docker-compose.acc.yml uptime-portal-ACC"
                         }
                     }
                 }
