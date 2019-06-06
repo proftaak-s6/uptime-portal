@@ -65,9 +65,11 @@ pipeline {
                 }
                 stage('SonarQube analysis') {
                     steps{
-                        // requires SonarQube Scanner 2.8+
-                        withSonarQubeEnv('Sonar Server') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: ''){
+                            // requires SonarQube Scanner 2.8+
+                            withSonarQubeEnv('Sonar Server') {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                            }
                         }
                     }
                 }
