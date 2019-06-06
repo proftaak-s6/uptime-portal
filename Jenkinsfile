@@ -62,6 +62,13 @@ pipeline {
                         git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'acceptance', credentialsId: 'Github'])
                     }
                 }
+                stage('SonarQube analysis') {
+                    // requires SonarQube Scanner 2.8+
+                    def scannerHome = tool 'Sonar Scanner';
+                    withSonarQubeEnv('Sonar Server') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
                 stage('Building image') {
                     steps{
                         script {
@@ -89,7 +96,7 @@ pipeline {
                     steps{
                         node("docker-prod"){
                             git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'acceptance', credentialsId: 'Github'])
-                            // sh "docker service rm uptime-portal-ACC_overheidsportaal"
+                            sh "docker service rm uptime-portal-ACC_overheidsportaal"
                             sh "docker stack deploy --with-registry-auth -c docker-compose.acc.yml uptime-portal-ACC"
                         }
                     }
