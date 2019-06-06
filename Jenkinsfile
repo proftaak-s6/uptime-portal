@@ -63,10 +63,12 @@ pipeline {
                     }
                 }
                 stage('SonarQube analysis') {
-                    // requires SonarQube Scanner 2.8+
-                    def scannerHome = tool 'Sonar Scanner';
-                    withSonarQubeEnv('Sonar Server') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    steps{
+                        // requires SonarQube Scanner 2.8+
+                        def scannerHome = tool 'Sonar Scanner';
+                        withSonarQubeEnv('Sonar Server') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                        }
                     }
                 }
                 stage('Building image') {
