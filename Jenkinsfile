@@ -4,6 +4,7 @@ pipeline {
     registryACC = "yoksar/uptime-portal-acc"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    scannerHome = tool 'Sonar Scanner';
   }
   agent any
     stages {
@@ -65,7 +66,6 @@ pipeline {
                 stage('SonarQube analysis') {
                     steps{
                         // requires SonarQube Scanner 2.8+
-                        def scannerHome = tool 'Sonar Scanner';
                         withSonarQubeEnv('Sonar Server') {
                         sh "${scannerHome}/bin/sonar-scanner"
                         }
