@@ -5,10 +5,9 @@ pipeline {
     registryCredential = 'dockerhub'
     dockerImage = ''
     scannerHome = tool 'Sonar Scanner'
-    env.NODEJS_HOME = "${tool 'NodeJSAuto'}"
-    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
   }
   agent any
+  tools { nodejs "NodeJSAuto"}
     stages {
         stage('Master') {
             when {
@@ -67,11 +66,13 @@ pipeline {
                 }
                 stage('SonarQube analysis') {
                     steps{
-                        script{
-                            // requires SonarQube Scanner 2.8+
-                            withSonarQubeEnv('Sonar Server') {
-                            sh "${scannerHome}/bin/sonar-scanner"
-                            }  
+                        nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: ''){
+                            script{
+                                // requires SonarQube Scanner 2.8+
+                                withSonarQubeEnv('Sonar Server') {
+                                sh "${scannerHome}/bin/sonar-scanner"
+                                }
+                            }
                         }
                     }
                 }
