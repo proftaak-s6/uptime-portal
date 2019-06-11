@@ -4,10 +4,9 @@ pipeline {
     registryACC = "yoksar/uptime-portal-acc"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    scannerHome = tool 'Sonar Scanner'
+    // scannerHome = tool 'Sonar Scanner'
   }
   agent any
-  tools { nodejs "NodeJSAuto"}
     stages {
         stage('Master') {
             when {
@@ -64,18 +63,18 @@ pipeline {
                         git([url: 'https://github.com/proftaak-s6/uptime-portal.git', branch: 'acceptance', credentialsId: 'Github'])
                     }
                 }
-                stage('SonarQube analysis') {
-                    steps{
-                        nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: ''){
-                            script{
-                                // requires SonarQube Scanner 2.8+
-                                withSonarQubeEnv('Sonar Server') {
-                                sh "${scannerHome}/bin/sonar-scanner"
-                                }
-                            }
-                        }
-                    }
-                }
+                // stage('SonarQube analysis') {
+                //     steps{
+                //         nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: ''){
+                //             script{
+                //                 // requires SonarQube Scanner 2.8+
+                //                 withSonarQubeEnv('Sonar Server') {
+                //                 sh "${scannerHome}/bin/sonar-scanner"
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
                 stage('Building image') {
                     steps{
                         script {
