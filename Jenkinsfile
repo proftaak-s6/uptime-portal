@@ -4,7 +4,9 @@ pipeline {
     registryACC = "yoksar/uptime-portal-acc"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    scannerHome = tool 'Sonar Scanner';
+    scannerHome = tool 'Sonar Scanner'
+    env.NODEJS_HOME = "${tool 'NodeJSAuto'}"
+    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
   }
   agent any
     stages {
@@ -65,13 +67,11 @@ pipeline {
                 }
                 stage('SonarQube analysis') {
                     steps{
-                        nodejs(nodeJSInstallationName: 'NodeJSAuto', configId: ''){
-                            script{
-                                // requires SonarQube Scanner 2.8+
-                                withSonarQubeEnv('Sonar Server') {
-                                sh "${scannerHome}/bin/sonar-scanner"
-                                }
-                            }
+                        script{
+                            // requires SonarQube Scanner 2.8+
+                            withSonarQubeEnv('Sonar Server') {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                            }  
                         }
                     }
                 }
